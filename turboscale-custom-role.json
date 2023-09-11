@@ -1,0 +1,68 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+      "_generator": {
+        "name": "bicep",
+        "version": "0.5.6.12127",
+        "templateHash": "2374787343287763411200690"
+      }
+    },
+    "variables": {
+      "roleName": "turboscale-custom-role",
+      "roleDescription": "Access required for creating Turboscale grid"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Authorization/roleDefinitions",
+        "apiVersion": "2018-07-01",
+        "name": "[variables('roleName')]",
+        "properties": {
+          "roleName": "[variables('roleName')]",
+          "description": "[variables('roleDescription')]",
+          "type": "customRole",
+          "permissions": [
+            {
+              "actions": [
+                "Microsoft.ContainerService/managedClusters/read",
+                "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
+                "Microsoft.ContainerService/managedClusters/write",
+                "Microsoft.ContainerService/managedClusters/delete",
+                "Microsoft.ContainerService/managedClusters/start/action",
+                "Microsoft.ContainerService/managedClusters/stop/action",
+                "Microsoft.Authorization/roleAssignments/read",
+                "Microsoft.Authorization/roleAssignments/write",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials/read",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials/write",
+                "Microsoft.Storage/storageAccounts/write",
+                "Microsoft.Storage/storageAccounts/read",
+                "Microsoft.AzureStack/linkedSubscriptions/linkedResourceGroups/linkedProviders/virtualNetworks/read",
+                "Microsoft.Network/virtualNetworks/read",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/read",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/write",
+                "Microsoft.ManagedIdentity/userAssignedIdentities/assign/action",
+                "Microsoft.Network/virtualNetworks/subnets/read",
+                "Microsoft.Resources/deployments/read",
+                "Microsoft.Resources/deployments/write",
+                "Microsoft.Resources/deployments/operationstatuses/read",
+                "Microsoft.Network/virtualNetworks/subnets/join/action",
+                "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action",
+                "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action",
+                "Microsoft.Storage/storageAccounts/blobServices/write",
+                "Microsoft.Storage/storageAccounts/blobServices/read",
+                "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action",
+                "Microsoft.Storage/storageAccounts/managementPolicies/write",
+                "Microsoft.Resources/subscriptions/resourceGroups/read"
+              ],
+              "notActions": [],
+              "dataActions": [],
+              "notDataActions": []
+            }
+          ],
+          "assignableScopes": [
+            "[concat('/subscriptions/', subscription().id, '/resourceGroups/', resourceGroup().name)]"
+          ]
+        }
+      }
+    ]
+  }
