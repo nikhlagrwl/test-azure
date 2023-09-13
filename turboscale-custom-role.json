@@ -60,7 +60,7 @@
             }
           ],
           "assignableScopes": [
-            "[concat(subscription().id]"
+            "[subscription().id]"
           ]
         }
       }
