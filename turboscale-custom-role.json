@@ -16,7 +16,7 @@
       {
         "type": "Microsoft.Authorization/roleDefinitions",
         "apiVersion": "2018-07-01",
-        "name": "[variables('roleName')]",
+        "name": "[guid(concat(variables('roleName'), subscription().id))]",
         "properties": {
           "roleName": "[variables('roleName')]",
           "description": "[variables('roleDescription')]",
@@ -60,7 +60,7 @@
             }
           ],
           "assignableScopes": [
-            "[concat('/subscriptions/', subscription().id, '/resourceGroups/', resourceGroup().name)]"
+            "[concat(subscription().id]"
           ]
         }
       }
